@@ -1,33 +1,33 @@
-const fs = require('fs');
-const { spawn } = require('child_process');
+const fs = require('fs')
+const { spawn } = require('child_process')
 
 module.exports.PythonRunner = async file => {
-  const executor = spawn('python', [file.path]);
+  const executor = spawn('python', [file])
 
-  process.stdin.pipe(executor.stdin);
+  // process.stdin.pipe(executor.stdin)
 
-  let data = '';
+  let logs = ''
   for await (const chunk of executor.stdout) {
-    console.log('stdout chunk: ' + chunk);
-    data += chunk;
+    console.log('stdout chunk: ' + chunk)
+    logs += chunk
   }
 
-  let error = '';
+  let error = ''
   for await (const chunk of executor.stderr) {
-    console.error('stderr chunk: ' + chunk);
-    error += chunk;
+    console.error('stderr chunk: ' + chunk)
+    error += chunk
   }
 
   const exitCode = await new Promise((resolve, reject) => {
-    executor.on('close', resolve);
-  });
+    executor.on('close', resolve)
+  })
 
   if (exitCode) {
-    console.log(`subprocess error exit ${exitCode}, ${error}`);
-    return error;
+    console.log(`subprocess error exit ${exitCode}, ${error}`)
+    // return error
   }
 
-  fs.unlinkSync(file.path);
+  fs.unlinkSync(file)
 
-  return data;
-};
+  return {logs, error}
+}

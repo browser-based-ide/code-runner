@@ -1,8 +1,10 @@
 const { PythonRunner } = require('../runners/PythonRunner');
+const { createFile } = require('../utils/createFile');
 
 
 module.exports.PyCodeRunner = async (req, res, next) => {
-  const result = await PythonRunner(req.file)
-  console.log(result);
-  res.json({ status: 'Success', msg: result });
+  const {codeSnippet, language} = req.body
+  const filePath = await createFile(codeSnippet, language)
+  const result = await PythonRunner(filePath)
+  res.json({ status: 'Success', output: result.logs, consoleError: result.error })
 };
