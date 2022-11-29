@@ -4,8 +4,10 @@ const path = require('path')
 
 
 const languageExentions = {
-  python: 'py',
-  cplusplus: 'cpp',
+  Python: 'py',
+  Java: 'java',
+  JavaScript: 'js',
+  Cpp: 'cpp',
 }
 
 module.exports.createFile = (code, language) => {
@@ -17,5 +19,3 @@ module.exports.createFile = (code, language) => {
   })
   return filePath
 }
-
-
