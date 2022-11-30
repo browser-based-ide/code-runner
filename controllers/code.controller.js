@@ -1,3 +1,4 @@
+const { CppRunner } = require('../runners/cppRunner')
 const { JavaScriptRunner } = require('../runners/jsRunner')
 const { PythonRunner } = require('../runners/PythonRunner')
 const { createFile } = require('../utils/createFile')
@@ -12,6 +13,8 @@ module.exports.PyCodeRunner = async (req, res, next) => {
     result = await PythonRunner(filePath)
   } else if (languages.JavaScript === language) {
     result = await JavaScriptRunner(filePath)
+  }else if (languages.Cpp === language) {
+    result = await CppRunner(filePath)
   }
   console.log(result)
   res.json({

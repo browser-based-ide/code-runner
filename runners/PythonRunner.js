@@ -5,6 +5,8 @@ module.exports.PythonRunner = async file => {
   const executor = spawn('python', [file])
 
   // process.stdin.pipe(executor.stdin)
+  // executor.stdin.write('4')
+  // executor.stdin.end()
 
   let logs = ''
   for await (const chunk of executor.stdout) {
@@ -29,5 +31,5 @@ module.exports.PythonRunner = async file => {
 
   fs.unlinkSync(file)
 
-  return {logs, error}
+  return { logs, error }
 }
