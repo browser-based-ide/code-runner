@@ -3,7 +3,7 @@
 
 # server files
 a.exe
-/uploads
+uploads/*/
 
 ### Node ###
 # Logs
