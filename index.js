@@ -32,6 +32,9 @@ app.use(function (req, res, next) {
 const CodeRoutes = require('./routes/code.route')
 
 //  Routes
+app.use('/',(req, res, next) => {
+  res.send('Up and running')
+})
 app.use('/api/code', CodeRoutes)
 
 app.listen(port, () => {
