@@ -3,6 +3,7 @@
 
 # server files
 a.exe
+a.out
 uploads/*/
 
 ### Node ###

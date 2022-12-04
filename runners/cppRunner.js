@@ -31,7 +31,7 @@ module.exports.CppRunner = async file => {
 
   fs.unlinkSync(file)
 
-  const child = spawn('./a')
+  const child = spawn('./a') // ./a.out for linux
   for await (const chunk of child.stdout) {
     console.log('stdout chunk: ' + chunk)
     logs += chunk

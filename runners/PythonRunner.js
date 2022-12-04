@@ -2,7 +2,7 @@ const fs = require('fs')
 const { spawn } = require('child_process')
 
 module.exports.PythonRunner = async file => {
-  const executor = spawn('python', [file])
+  const executor = spawn('python3', [file])
 
   // process.stdin.pipe(executor.stdin)
   // executor.stdin.write('4')
