@@ -13,9 +13,9 @@ const router = require('express').Router()
 // var upload = multer({ storage: storage });
 
 // import controllers
-const { PyCodeRunner } = require('../controllers/code.controller')
+const { CodeRunner } = require("../controllers/code.controller");
 
 // actual routes
-router.post('/run', PyCodeRunner)
+router.post("/run", CodeRunner);
 
 module.exports = router

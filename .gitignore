@@ -4,7 +4,7 @@
 # server files
 a.exe
 a.out
-uploads/*/
+uploads/*
 
 ### Node ###
 # Logs

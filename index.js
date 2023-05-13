@@ -39,9 +39,7 @@ const CodeRoutes = require("./routes/code.route");
 
 //  Routes
 app.use("/api/code", CodeRoutes);
-app.use("/api/debug", (req, res, next) => {
-  console.log(req.body);
-});
+
 app.use("/", (req, res, next) => {
   res.send("Up and running");
 });
